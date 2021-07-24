@@ -1,4 +1,4 @@
-baseURL: https://www.quantumjosh.me
+baseURL: https://quantumjosh.azureedge.net/
 
 languageCode: en-us
 title: "Quantum Josh (site under construction)"
@@ -26,6 +26,8 @@ enableEmoji: true
 params:
   gitRepo: https://github.com/jmgloria07/quantumjosh.me
   gitBranch: master
+
+  background: "images/background.jpg"
 
   enableBlogPost: false
   enableTOC: true

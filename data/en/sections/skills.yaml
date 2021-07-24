@@ -1,4 +1,3 @@
-# section information
 section:
   name: Skills
   id: skills
@@ -7,8 +6,6 @@ section:
   showOnNavbar: true
   hideTitle: false
 
-# Your Skills.
-# Give a summary of you each skill in the summary section.
 skills:
 - name: Java 8+/JavaEE
   summary: "Main language for professional projects. Capable of writing scalable, testable, and maintainable classes through the use of different frameworks such as Spring, Struts 2, JSP/Servlets. Core strength is on Web APIs, but highly flexible on whatever project I'm on."
