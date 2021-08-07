@@ -29,6 +29,10 @@ params:
 
   background: "images/background.jpg"
 
+  logo:
+    main: images/logo/main-logo.png
+    inverted: images/logo/main-logo.png
+    favicon: images/logo/main-logo.png
   enableBlogPost: false
   enableTOC: true
   newsletter:

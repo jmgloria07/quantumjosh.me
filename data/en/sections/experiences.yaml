@@ -1,0 +1,66 @@
+section:
+  name: Experiences
+  id: experiences
+  enable: true
+  weight: 3
+  showOnNavbar: true
+
+experiences:
+- company:
+    name: Cognizant Softvision // Magenic Studios
+    url: "https://www.magenic.com"
+    location: Makati, Philippines
+    overview: Magenic drives Fortune 1000 clients by developing applications using leading technologies. Every day offers me a new opportunity to make my mark in this evolving market, while growing my development acumen and personal brand. I participate in emerging tech thought leadership, knowledge sharing, and have the opportunity to collaborate with Magenic's nationally known technical leaders.
+  positions:
+  - designation: CSV Developer - Senior Associate
+    start: Oct 2020
+    responsibilities:
+    - Be part of fully agile teams that deliver value to client's needs.
+    - Migrate legacy applications to newer counterparts, i.e. MemCached to Redis, etc. 
+- company:
+    name: Tata Consultancy Services
+    url: "https://www.tcs.com"
+    location: Bonifacio Global City, Taguig, Philippines
+    overview: TCS is a multi-national IT services company based in India, that caters process offshoring, consultancy as well as business solutions. Working as one of their engineers, I became part of different teams that maintain and develop different portfolios of web applications, as well as start a project from ground up, all with close coordination with their respective clients.
+  positions:
+  - designation: Associate Systems Engineer
+    start: April 2018
+    end: September 2020
+    responsibilities:
+    - Understand requirements and provide swift responses related to the task. 
+    - Develop web applications from innovative ideas. 
+    - Provide analyses on code-level implementation of a business request. 
+- company:
+    name: Pointwest Innovations Corporation
+    url: "https://pointwest.com.ph/"
+    location: Quezon City, Philippines
+    overview: Pointwest is a relatively young local IT company that was established during the early 2000s. Most of the projects I handled were support of existing web applications, but I also had chances to perform as a coordinator to close the offshore and client communication.
+  positions:
+  - designation: Applications Management Engineer
+    start: May 2015
+    end: March 2018
+    responsibilities:
+    - Developed and maintained existing client software by fixing reported defects and applying requested enhancements. 
+    - Became a coordinator with onsite clients and offshore– clarifying and reporting requirements to the latter. 
+- company:
+    name: PCM BPO, LLC
+    location: Mandaluyong City, Philippines
+    overview: PCM BPO, LLC is the local extension of PCM Incorporated, and handles the IT and Marketing at offshore. As a fresh graduate, I was trained under their bootcamp program and graduated as a junior developer, which then be fully integrated with the team.
+  positions:
+  - designation: Junior Software Engineer
+    start: February 2014
+    end: May 2015
+    responsibilities:
+    - Worked with projects– developed and maintained software (specifically web applications and their change requests) for business IT solutions on Java EE. 
+    - Learned basic web development through their bootcamp program.
+- company:
+    name: AssistPlus Incorporated
+    location: Manila, Philippines
+    overview: AssistPlus is a local software solutions provider that partnered with the university I was in. As a developer trainee, AssistPlus allowed me to learn by experience by being close part of the team. They gave me modules to work on to be integrated with the application they were creating.
+  positions:
+  - designation: Developer Trainee (Intern)
+    start: September 2012
+    end: December 2012
+    responsibilities:
+    - Created modules -- menu actions, reports, etc. -- for an Attendance and Payroll System using Visual Basic.NET, integrated with SQL Server 2008 for data persistence.
+    - Learned different tools in the .NET framework such as database integration (including Stored Procedures), Microsoft Office Excel input, as well as generating reports through Crystal Reports. 

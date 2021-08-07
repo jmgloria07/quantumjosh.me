@@ -1,0 +1,24 @@
+# section information
+section:
+  name: Achievements
+  id: achievements
+  enable: true
+  weight: 8
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your achievements achievements
+achievements:
+- title: Presenter
+  image: /images/achievements/qa-in-agile-env-cert.jpg
+  summary: Delivered a presentation for college students on the topic about QAs in an Agile Environment
+- title: Top Passer
+  image: /images/achievements/top-passer.jpg
+  summary: Consistently on top during in-house technical classes
+- title: 21K Finisher, TCS - Animo Marathon
+  image: /images/achievements/tcs-animo.jpg
+  summary: Half-marathon finisher representing TCS
+- title: Graduation
+  image: /images/achievements/gradpic.jpg
+  summary: Received Bachelor of Science in Computer Engineering from Far Eastern Univeristy - East Asia College (now Institute of Technology).

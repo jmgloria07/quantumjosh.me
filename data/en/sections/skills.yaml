@@ -8,14 +8,29 @@ section:
 
 skills:
 - name: Java 8+/JavaEE
+  logo: "images/logo/java-brands.svg"
   summary: "Main language for professional projects. Capable of writing scalable, testable, and maintainable classes through the use of different frameworks such as Spring, Struts 2, JSP/Servlets. Core strength is on Web APIs, but highly flexible on whatever project I'm on."
   url: "https://www.java.com/en/"
 
 - name: Cloud Computing
+  logo: images/logo/cloud-solid.svg
   summary: "Plays around with interesting technologies whenever possible, one of which is the beautiful world of cloud. Worked with the following cloud platforms on either personal or professional projects: AWS, Azure, PCF, IBM Red Hat OpenShift, etc."
 
 - name: SAFe 5.0/Agile
   logo: "images/logo/ssm.png"
   summary: "Agile by heart: self-organized and highly flexible. Certified SAFe 5 Scrum Master. Also worked with SDLC and waterfall projects."
   url: "https://www.credly.com/badges/d87c2b17-760d-4473-9b12-5a9457d2a7e2"
-  
+
+- name: Photography
+  logo: images/logo/camera-solid.svg
+  summary: "Neophyte photographer learning to express how he sees the world via combinations of light coming thru the lens."
+
+- name: Fiction
+  logo: images/logo/book-open-solid.svg
+  summary: "Loves to dive into different worlds in any form: books, movies, and video games!"
+
+- name: Video Gaming
+  logo: images/logo/gamepad-solid.svg
+  summary: "Huge fan of games, especially those with a broad lore."
+
+
