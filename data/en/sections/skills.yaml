@@ -14,7 +14,7 @@ skills:
 
 - name: Cloud Computing
   logo: images/logo/cloud-solid.svg
-  summary: "Plays around with interesting technologies whenever possible, one of which is the beautiful world of cloud. Worked with the following cloud platforms on either personal or professional projects: AWS, Azure, PCF, IBM Red Hat OpenShift, etc."
+  summary: "Plays around with interesting technologies whenever possible, one of which is the beautiful world of cloud. Worked with the following cloud platforms on either personal or professional projects: AWS, Azure, PCF, and IBM Red Hat OpenShift."
 
 - name: SAFe 5.0/Agile
   logo: "images/logo/ssm.png"
@@ -25,12 +25,12 @@ skills:
   logo: images/logo/camera-solid.svg
   summary: "Neophyte photographer learning to express how he sees the world via combinations of light coming thru the lens."
 
-- name: Fiction
+- name: (Consuming) Fiction
   logo: images/logo/book-open-solid.svg
   summary: "Loves to dive into different worlds in any form: books, movies, and video games!"
 
-- name: Video Gaming
-  logo: images/logo/gamepad-solid.svg
-  summary: "Huge fan of games, especially those with a broad lore."
+- name: Running
+  logo: images/logo/running-solid.svg
+  summary: "Half-marathon (21Km) finisher, SUB-1 (10Km for 1hr) participant."
 
 

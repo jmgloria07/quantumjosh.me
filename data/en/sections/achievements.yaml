@@ -10,15 +10,15 @@ section:
 
 # Your achievements achievements
 achievements:
-- title: Presenter
-  image: /images/achievements/qa-in-agile-env-cert.jpg
-  summary: Delivered a presentation for college students on the topic about QAs in an Agile Environment
+- title: Learning Certificates - Presenter/Student
+  image: /images/achievements/cert-collage.jpg
+  summary: As a huge fan of learning, various certificates are received taking part as either presenter or student.
 - title: Top Passer
   image: /images/achievements/top-passer.jpg
   summary: Consistently on top during in-house technical classes
-- title: 21K Finisher, TCS - Animo Marathon
-  image: /images/achievements/tcs-animo.jpg
+- title: 21K Finisher, TCS Clark Animo International Marathon 2019
+  image: /images/achievements/marathon_results.jpg
   summary: Half-marathon finisher representing TCS
 - title: Graduation
   image: /images/achievements/gradpic.jpg
-  summary: Received Bachelor of Science in Computer Engineering from Far Eastern Univeristy - East Asia College (now Institute of Technology).
+  summary: Graduated as Bachelor of Science in Computer Engineering at Far Eastern University - East Asia College (now Institute of Technology).
