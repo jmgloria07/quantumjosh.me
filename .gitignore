@@ -2,7 +2,10 @@
 # Generated files by hugo
 /public/
 /resources/_gen/
+
+# should not be saved to repo
 /assets/
+/static/
 
 # Executable may be added to repository
 hugo.exe
