@@ -1,11 +1,11 @@
 name: "Josh Gloria"
 nickname: "Josh"
-
 greeting: "Hi, I am"
-image: "images/author/josh.jpg"
-
+image: "images/author/josh.png"
 contactInfo:
   email: "josh@quantumjosh.me"
+  github: jmgloria07
+  linkedin: jmgloria07
 
 summary:
   - Part-time developer

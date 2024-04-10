@@ -29,17 +29,31 @@ socialLinks:
 
 badges:
 - type: certification
-  name: Certified SAFe® 5 Scrum Master
+  name: AWS Certified Solutions Architect – Associate
+  url: "https://www.credly.com/earner/earned/badge/fdd4a2a8-65d8-4de1-a402-241efd7dffd4"
+  badge: "https://images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png"
+
+- type: certification
+  name: Certified SAFe® 6 Practitioner
+  url: "https://www.credly.com/earner/earned/badge/95e3359c-7759-4de4-b472-fcc8d0c23312"
+  badge: "https://images.credly.com/images/08703175-4b43-4c72-9075-5c03a9ebe5d0/image.png"
+
+- type: certification
+  name: Certified SAFe® 5 Scrum Master (expired)
   url: "https://www.credly.com/badges/d87c2b17-760d-4473-9b12-5a9457d2a7e2"
   badge: "https://images.credly.com/size/340x340/images/7a30a2e5-82bb-406b-b0f8-52fd846eac69/cert_mark_SSM_badge_large_300px.png"
-  
-softSkills:
-- name: Leadership
+
+- type: soft-skill-indicator
+  name: Leadership
   percentage: 85
   color: blue
-- name: Team Work
+
+- type: soft-skill-indicator
+  name: Team Work
   percentage: 90
   color: yellow
-- name: Flexibility
+
+- type: soft-skill-indicator
+  name: Flexibility
   percentage: 95
-  color: yellow
+  color: orange

@@ -2,10 +2,15 @@
 # Generated files by hugo
 /public/
 /resources/_gen/
+/assets/jsconfig.json
+hugo_stats.json
+.hugo_build.lock
 
-# should not be saved to repo
-/assets/
-/static/
+# npm
+node_modules/*
+
+# firebase
+.firebase/
 
 # Executable may be added to repository
 hugo.exe
@@ -23,3 +28,4 @@ $RECYCLE.BIN/
 .DS_Store
 
 .vercel
+

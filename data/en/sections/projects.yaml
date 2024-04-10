@@ -2,7 +2,7 @@ section:
   name: Projects
   id: projects
   enable: true
-  weight: 5
+  weight: 4
   showOnNavbar: true
 
 buttons:
@@ -17,11 +17,17 @@ buttons:
 projects:
 - name: Quantum Josh
   logo: /images/logo/main-logo.png
- # url: https://www.quantumjosh.me
   role: Owner
   repo: https://github.com/jmgloria07/quantumjosh.me
   summary: A personal portfolio web page of yours truly based on Hugo theme [Toha](https://github.com/hugo-toha/toha).
   tags: ["hobby","hugo","ui","static"]
+
+- name: THE-HACKSAW
+  url: https://the-hacksaw.quantumjosh.me
+  role: Owner
+#  repo: https://github.com/jmgloria07/joshilog.com
+  summary: "A web application crafted to assist in streamlining cutting processes across various one-dimensional materials. Created with React, see code repository at [Github](https://github.com/jmgloria07/the-hacksaw)."
+  tags: ["hobby","react","ui","single-page"]
 
 - name: Joshilog
 #  logo: /images/logo/main-logo.png
