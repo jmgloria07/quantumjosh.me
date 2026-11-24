@@ -1,5 +1,5 @@
 baseURL: https://quantumjosh.me
-languageCode: en-us
+locale: en-us
 title: "Quantum Josh"
 
 # Use Hugo modules to add theme
@@ -9,7 +9,7 @@ module:
   mounts:
   - source: static/files
     target: static/files
-  - source: ./node_modules/flag-icon-css/flags
+  - source: ./node_modules/flag-icons/flags
     target: static/flags
   - source: ./node_modules/@fontsource/mulish/files
     target: static/files
@@ -20,7 +20,7 @@ module:
 # For any more details, you can check the official documentation: https://gohugo.io/content-management/multilingual/
 languages:
   en:
-    languageName: English
+    label: English
     weight: 1
 
 # Force a locale to be use, really useful to develop the application ! Should be commented in production, the "weight" should rocks.

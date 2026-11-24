@@ -7,16 +7,38 @@ section:
 
 experiences:
 - company:
-    name: Cognizant Softvision // Magenic Studios
-    url: "https://www.magenic.com"
+    name: Pleased.com
+    url: "https://www.pleased.com"
+    location: Bonifacio Global City, Taguig, Philippines
+    overview: Pleased.com is an all-inclusive, easy-to-use, and affordable customer support platform, built to help businesses serve their customers helpfully and efficiently, and to help support teams scale.
+  positions:
+  - designation: Senior Backend Developer
+    start: November 2026
+- company:
+    name: Digiplus Interactive Corporation
+    url: "https://digiplus.com.ph/"
+    location: Bonifacio Global City, Taguig, Philippines
+    overview: Digiplus is a leading digital entertainment company in the Philippines. It brings timeless Filipino favorites into the digital age while creating culturally resonant experiences for today's audiences, with responsible gaming at the heart of what it does.
+  positions:
+  - designation: Senior Java Developer
+    start: July 2024
+    end: October 2026
+    responsibilities:
+    - Led back-end development for a free-to-play promotional game, and led a team delivering features across distributed services.
+    - Built Java (Spring Boot) REST services and microservices for asset management and back-office operations, initially on AWS and later migrated to Alibaba Cloud.
+    - Improved system stability through proactive bug fixing and performance optimizations.
+- company:
+    name: Cognizant Technology Solutions
+    url: "https://www.cognizant.com"
     location: Makati, Philippines
-    overview: Magenic, as part of Cognizant Softvision, drives Fortune 1000 clients by developing applications using leading technologies. Every day offers me a new opportunity to make my mark in this evolving market, while growing my development acumen and personal brand. I participate in emerging tech thought leadership, knowledge sharing, and have the opportunity to collaborate with Magenic's nationally known technical leaders.
+    overview: Cognizant is a multinational IT services and consulting company. I worked in agile teams delivering and modernizing enterprise applications for its clients.
   positions:
   - designation: Senior Software Engineer
-    start: Oct 2020
+    start: October 2020
+    end: June 2024
     responsibilities:
-    - Be part of fully agile teams that deliver value to client's needs.
-    - Migrate legacy applications to newer counterparts, i.e. MemCached to Redis, etc. 
+    - Was part of fully agile teams delivering value to clients' needs.
+    - Migrated legacy applications to newer counterparts, e.g., Memcached to Redis.
 - company:
     name: Tata Consultancy Services
     url: "https://www.tcs.com"

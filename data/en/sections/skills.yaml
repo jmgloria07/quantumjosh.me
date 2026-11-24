@@ -6,19 +6,19 @@ section:
   showOnNavbar: true
 
 skills:
-- name: Java 8+/JavaEE
+- name: Java & Spring Boot
   logo: /images/sections/skills/duke.png
-  summary: "Main language for professional projects. Capable of writing scalable, testable, and maintainable classes through the use of different frameworks such as Spring, Struts 2, JSP/Servlets. Core strength is on Web APIs, but highly flexible on whatever project I'm on."
+  summary: "My main language and framework. I build and maintain backend services in Java with Spring Boot. My core strength is web APIs, but I'm highly flexible on whatever project I'm on."
   url: "https://www.java.com/en/"
 
-- name: Cloud Computing
-  logo: /images/sections/skills/cloud.png
-  summary: "Plays around with interesting technologies whenever possible, one of which is the beautiful world of cloud. AWS Certified, also worked with the following cloud platforms on either personal or professional projects: Azure, PCF, and IBM Red Hat OpenShift."
+- name: Microservices
+  logo: /images/sections/skills/diagram-project-solid.svg
+  summary: "I work on microservice-based backends for enterprise applications and distributed systems."
 
-- name: SAFe 6.0/Agile
-  logo: /images/sections/skills/person-running-solid.svg
-  summary: "Agile by heart: self-organized and highly flexible. Certified SAFe 6 Agile Practitioner. Also worked with SDLC and waterfall projects."
-  
+- name: AI-assisted Development
+  logo: /images/sections/skills/robot-solid.svg
+  summary: "I use AI coding assistants in everyday development, but the final review and judgment stay with me."
+
 - name: Photography
   logo: /images/sections/skills/camera-solid.svg
   summary: "Neophyte photographer learning to express how he sees the world via combinations of light coming thru the lens."
@@ -30,5 +30,3 @@ skills:
 - name: PC Building and Tinkering
   logo: /images/sections/skills/computer-solid.svg
   summary: "Grew up with computers - able to build, as well as troubleshoot issues related to hardware and software on custom PCs."
-
-

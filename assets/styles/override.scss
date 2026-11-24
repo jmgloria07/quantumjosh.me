@@ -1,0 +1,8 @@
+/* Site-specific overrides, loaded last by the Toha theme. */
+
+// Monochrome SVG card icons (Font Awesome) are black, and as <img> they can't
+// inherit the text color. In dark mode, turn them light so they stay visible.
+// Raster logos (e.g. duke.png, cloud.png) keep their own colors.
+html[data-theme='dark'] .card-img-xs[src$='.svg'] {
+  filter: invert(1) brightness(0.9);
+}
