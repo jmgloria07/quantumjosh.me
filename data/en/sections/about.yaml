@@ -6,9 +6,9 @@ section:
   showOnNavbar: true
   template: sections/about.html
 
-designation: Web API developer, huge geek
+designation: Senior Java Developer | Backend Engineer
 
-summary: "I am a passionate ~~geek~~ developer with over seven years of working experience. Professionally, I've been part of various projects from various domains that utilize various technologies. Personally, coding is my creative outlet. Every project so far has been a new one and has been exciting, and I'm always looking forward to new challenges."
+summary: "I am a Senior Java Developer with over a decade of software development experience, focused on building backend systems and web APIs. My professional work centers on Java and Spring Boot, while personal projects let me explore product ideas, self-hosted applications, and practical uses of AI. I enjoy solving engineering problems, improving existing systems, and turning ideas into working software."
 
 socialLinks:
 - name: Email
