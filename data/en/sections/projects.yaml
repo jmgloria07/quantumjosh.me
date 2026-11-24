@@ -13,44 +13,46 @@ buttons:
 - name: UI
   filter: "ui"
 
-# your projects
 projects:
+- name: Tally
+  role: Owner
+  repo: https://github.com/jmgloria07/tally
+  summary: "A self-hosted personal fitness tracker with a private AI coach. Built with Spring Boot, React, Vite, and SQLite; it supports workout, meal, and weight logging, LM Studio-powered coaching, and optional Discord-based logging."
+  tags: ["hobby","java","spring-boot","react","ai","fitness","self-hosted"]
+
 - name: Quantum Josh
   logo: /images/logo/main-logo.png
   role: Owner
   repo: https://github.com/jmgloria07/quantumjosh.me
-  summary: A personal portfolio web page of yours truly based on Hugo theme [Toha](https://github.com/hugo-toha/toha).
+  summary: A personal portfolio website built with Hugo and the Toha theme.
   tags: ["hobby","hugo","ui","static"]
 
 - name: THE-HACKSAW
   url: https://the-hacksaw.quantumjosh.me
   role: Owner
-#  repo: https://github.com/jmgloria07/joshilog.com
-  summary: "A web application crafted to assist in streamlining cutting processes across various one-dimensional materials. Created with React, see code repository at [Github](https://github.com/jmgloria07/the-hacksaw)."
+  summary: "A React web application designed to streamline cutting plans for one-dimensional materials. Source code is available on [GitHub](https://github.com/jmgloria07/the-hacksaw)."
   tags: ["hobby","react","ui","single-page"]
 
 - name: Joshilog
-#  logo: /images/logo/main-logo.png
   url: https://www.joshilog.com
   role: Owner
-#  repo: https://github.com/jmgloria07/joshilog.com
-  summary: "*May tocilog, tapsilog, meron din joshilog*! A blog, also by yours truly. See code repository at [Github](https://github.com/jmgloria07/joshilog.com)."
+  summary: "*May tocilog, tapsilog, meron din joshilog*! A personal blog built with Hugo. Source code is available on [GitHub](https://github.com/jmgloria07/joshilog.com)."
   tags: ["hobby","hugo","ui","static"]
 
 - name: Tic Tac Toe Game
   role: Contributor
   repo: https://github.com/jmgloria07/ASPNetCoreMastersTicTacToeGame
-  summary: A Tic-Tac-Toe API game. Presented as ASP.NET Core masters class final project.
+  summary: A Tic-Tac-Toe API game created as the final project for an ASP.NET Core masterclass.
   tags: ["hobby","professional","api","netcore"]
 
 - name: Grace Note (API)
   role: Owner
   repo: https://github.com/jmgloria07/gracenote
-  summary: Grace Note is a social network aware application that allows *a user to note and/or share what they are grateful for*. This project is designed as a REST application that connects to an RDBMS repository.
+  summary: A REST application for recording and sharing gratitude, backed by a relational database.
   tags: ["hobby","api","spring","spring-boot"]
 
 - name: Grace Note (UI)
   role: Owner
   repo: https://github.com/jmgloria07/gracenote-angular
-  summary: This is [Grace Note's](https://github.com/jmgloria07/gracenote) UI equivalent, created in Angular.
+  summary: "The Angular frontend for [Grace Note](https://github.com/jmgloria07/gracenote)."
   tags: ["hobby","ui","static","angular"]
