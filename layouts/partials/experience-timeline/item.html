@@ -1,0 +1,56 @@
+{{- /*
+  One company on the experience timeline.
+  Context: dict "exp" <experience entry> "compact" <bool>.
+  Full items show everything; compact items collapse into a one-line <details> summary.
+  Company date span = oldest position's start to newest position's end (as in the theme).
+*/ -}}
+{{- $exp := .exp -}}
+{{- $company := $exp.company -}}
+{{- $newest := index (first 1 $exp.positions) 0 -}}
+{{- $oldest := index (last 1 $exp.positions) 0 -}}
+{{- $isCurrent := not $newest.end -}}
+{{- $end := $newest.end | default (i18n "present") -}}
+{{- $dates := printf "%s – %s" $oldest.start $end -}}
+
+{{- $companyName := $company.name -}}
+{{- if $company.url }}
+  {{- $companyName = printf `<a href="%s" target="_blank" rel="noopener">%s</a>` $company.url $company.name | safeHTML -}}
+{{- end -}}
+
+<li class="xp-item{{ if $isCurrent }} is-current{{ end }}{{ if .compact }} is-compact{{ end }}">
+  <span class="xp-dot" aria-hidden="true"></span>
+
+  {{- if .compact }}
+    <details class="xp-compact">
+      <summary>
+        <span class="xp-compact-role">{{ $newest.designation }}</span>
+        <span class="xp-compact-company">{{ $company.name }}</span>
+        <span class="xp-dates">{{ $dates }}</span>
+      </summary>
+      <div class="xp-compact-body">
+        <p class="xp-company">
+          {{ $companyName }}
+          {{- with $company.location }}<span class="xp-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ . }}</span>{{ end }}
+        </p>
+        {{ partial "experience-timeline/details.html" $exp }}
+      </div>
+    </details>
+  {{- else }}
+    <article class="xp-card">
+      <header class="xp-header">
+        <div class="xp-heading">
+          <h2 class="xp-role">{{ $newest.designation }}</h2>
+          <p class="xp-company">
+            {{ $companyName }}
+            {{- with $company.location }}<span class="xp-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ . }}</span>{{ end }}
+          </p>
+        </div>
+        <p class="xp-dates">
+          {{ $dates }}
+          {{- if $isCurrent }}<span class="xp-badge">Current</span>{{ end }}
+        </p>
+      </header>
+      {{ partial "experience-timeline/details.html" $exp }}
+    </article>
+  {{- end }}
+</li>

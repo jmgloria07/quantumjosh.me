@@ -1,0 +1,79 @@
+// Skills cards (theme markup: layouts/partials/cards/skill*.html)
+
+html[data-theme] .skills-section {
+  .card {
+    @include qj-card;
+    @include qj-card-hover;
+    height: 100%;
+    overflow: hidden;
+
+    .card-head {
+      align-items: center;
+      background-color: transparent !important;
+      border-bottom: 1px solid var(--qj-border) !important;
+      padding: 1rem 1.25rem 0.75rem;
+    }
+
+    .card-img-xs {
+      margin-bottom: 0;
+    }
+
+    .card-title {
+      color: var(--qj-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0;
+    }
+
+    .card-body {
+      padding: 0.85rem 1.25rem 1.25rem !important;
+    }
+
+    .card-text {
+      color: var(--qj-text);
+      text-align: left;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+  }
+
+  // Cards are links when a skill has a url; keep text colors.
+  a.text-decoration-none:hover .card-title {
+    color: var(--qj-accent);
+  }
+
+  // Grid rows get equal-height cards.
+  .filtr-item {
+    margin-bottom: 1rem;
+  }
+
+  // On smaller screens the theme narrows this container to 95% and drops its padding,
+  // so the row's negative gutters stick out past it. Restore standard container padding
+  // so the cards line up with the other sections.
+  // Bootstrap's own container widths for each breakpoint.
+  @media (max-width: 991.98px) {
+    .container.d-flex-block {
+      max-width: 100%;
+      padding-inline: calc(var(--bs-gutter-x, 1.5rem) * 0.5);
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .container.d-flex-block {
+      max-width: 540px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    .container.d-flex-block {
+      max-width: 720px;
+    }
+  }
+}
+
+// Monochrome SVG card icons (Font Awesome) are black and, as <img>, can't
+// inherit the text color. In dark mode, turn them light so they stay visible.
+// Raster logos (e.g. duke.png, cloud.png) keep their own colors.
+html[data-theme='dark'] .card-img-xs[src$='.svg'] {
+  filter: invert(1) brightness(0.9);
+}

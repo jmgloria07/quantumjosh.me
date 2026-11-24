@@ -1,6 +1,7 @@
 name: "Josh Gloria"
 nickname: "Josh"
 greeting: "Hi, I am"
+subtitle: "Senior Java Developer · Backend Engineer"
 image: "images/author/josh.png"
 contactInfo:
   email: "josh@quantumjosh.me"

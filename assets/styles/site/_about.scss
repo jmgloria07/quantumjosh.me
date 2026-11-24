@@ -1,0 +1,115 @@
+// About (layouts/partials/sections/about-profile.html)
+
+html[data-theme] .about-profile {
+  .about-name {
+    color: var(--qj-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .about-designation {
+    color: var(--qj-accent);
+    font-family: $qj-mono;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-summary {
+    color: var(--qj-text);
+    font-size: 1.075rem;
+    line-height: 1.75;
+    max-width: 62ch;
+  }
+
+  .about-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--qj-border-strong);
+      border-radius: 50%;
+      color: var(--qj-text);
+      font-size: 1.1rem;
+      transition: color var(--qj-fast) var(--qj-ease), border-color var(--qj-fast) var(--qj-ease),
+        background-color var(--qj-fast) var(--qj-ease);
+
+      &:hover {
+        color: var(--qj-accent);
+        border-color: var(--qj-accent);
+        background: var(--qj-accent-soft);
+      }
+    }
+  }
+
+  .about-resources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .about-resource {
+    border: 1px solid var(--qj-accent);
+    border-radius: var(--qj-radius-sm);
+    color: var(--qj-accent);
+    font-weight: 600;
+    padding: 0.45rem 1rem;
+    text-decoration: none;
+
+    &:hover {
+      background: var(--qj-accent);
+      color: var(--qj-on-accent);
+    }
+  }
+
+  .about-label {
+    color: var(--qj-muted);
+    font-family: $qj-mono;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .about-badges {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 112px));
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include qj-card;
+      @include qj-card-hover;
+      aspect-ratio: 1;
+      padding: 0.75rem;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 112px;
+    }
+  }
+}
+
+// Some Credly badge images have a white background; give the tiles a light
+// surface in dark mode so every badge sits on the same color.
+html[data-theme='dark'] .about-profile .about-badges a {
+  background: #f1f5f9;
+  border-color: transparent;
+}

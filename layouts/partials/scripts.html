@@ -1,0 +1,9 @@
+{{- /*
+  OVERRIDES the theme's layouts/partials/scripts.html (a single line, kept below)
+  to add the site's own script. Re-check this file after theme upgrades.
+*/ -}}
+{{ partial "helpers/script-bundle.html" }}
+{{- with resources.Get "scripts/site.js" }}
+  {{- $js := . | js.Build (dict "minify" (not hugo.IsDevelopment) "target" "es2018") | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{- end }}

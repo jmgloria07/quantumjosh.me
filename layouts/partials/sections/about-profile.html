@@ -1,0 +1,66 @@
+{{- /*
+  About section: bio, social links and certification badges.
+  Replaces the theme's sections/about.html (selected via `template:` in data/en/sections/about.yaml).
+  Only badges with type "certification" are shown.
+*/ -}}
+{{- $sectionID := .section.id | default (replace (lower .section.name) " " "-") -}}
+{{- $author := hugo.Data.author -}}
+{{- with (index hugo.Data site.Language.Lang).author }}{{ $author = . }}{{ end -}}
+{{- $certs := where (.badges | default slice) "type" "certification" -}}
+
+<div class="container anchor about-section about-profile" id="{{ $sectionID }}">
+  <h1 class="text-center"{{ if .section.hideTitle }} style="display: none"{{ end }}>{{ .section.name }}</h1>
+
+  {{- /* gx-4: a wider horizontal gutter would overflow the container's padding. */}}
+  <div class="row gx-4 gy-5 align-items-start">
+    <div class="{{ if $certs }}col-lg-7{{ else }}col-12{{ end }}">
+      <h2 class="about-name">{{ $author.name }}</h2>
+      {{- with .designation }}
+        <p class="about-designation">{{ . }}</p>
+      {{- end }}
+      <p class="about-summary">{{ .summary | markdownify }}</p>
+
+      {{- with .socialLinks }}
+        <ul class="about-social">
+          {{- range . }}
+            {{- $href := .url }}
+            {{- if eq .name "Email" }}{{ $href = printf "mailto:%s" .url }}{{ end }}
+            {{- if eq .name (i18n "phone") }}{{ $href = printf "tel:%s" .url }}{{ end }}
+            <li>
+              <a href="{{ $href }}" aria-label="{{ .name }}" title="{{ .name }}"
+                {{- if not (hasPrefix $href "mailto:") }} target="_blank" rel="{{ .rel | default "noopener" }}"{{ end }}>
+                <i class="{{ .icon }}" aria-hidden="true"></i>
+              </a>
+            </li>
+          {{- end }}
+        </ul>
+      {{- end }}
+
+      {{- if or .resume .resourceLinks }}
+        <div class="about-resources">
+          {{- with .resume }}
+            <a class="about-resource" href="{{ . | relURL }}" target="_blank" rel="noopener">{{ i18n "resume" }}</a>
+          {{- end }}
+          {{- range .resourceLinks }}
+            <a class="about-resource" href="{{ .url | relURL }}" target="_blank" rel="noopener">{{ .title }}</a>
+          {{- end }}
+        </div>
+      {{- end }}
+    </div>
+
+    {{- with $certs }}
+      <div class="col-lg-5">
+        <p class="about-label">Certifications</p>
+        <ul class="about-badges">
+          {{- range . }}
+            <li>
+              <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .name }}">
+                <img src="{{ .badge }}" alt="{{ .name }}" width="112" height="112" loading="lazy" decoding="async" />
+              </a>
+            </li>
+          {{- end }}
+        </ul>
+      </div>
+    {{- end }}
+  </div>
+</div>

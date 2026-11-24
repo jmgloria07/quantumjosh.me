@@ -1,0 +1,36 @@
+{{- /*
+  Experience section: single-column timeline. The first `expandedCount` companies
+  (default 3) are shown in full; the rest sit under a native <details> "Earlier roles".
+  Replaces the theme's sections/experiences.html (selected via `template:` in
+  data/en/sections/experiences.yaml). Data format is unchanged.
+*/ -}}
+{{- $sectionID := .section.id | default (replace (lower .section.name) " " "-") -}}
+{{- $expandedCount := .expandedCount | default 3 -}}
+{{- $recent := first $expandedCount .experiences -}}
+{{- $earlier := after $expandedCount .experiences -}}
+
+<div class="container-fluid anchor experience-timeline" id="{{ $sectionID }}">
+  <h1 class="text-center"{{ if .section.hideTitle }} style="display: none"{{ end }}>{{ .section.name }}</h1>
+
+  <div class="container xp-container">
+    <ol class="xp-list">
+      {{- range $recent }}
+        {{ partial "experience-timeline/item.html" (dict "exp" . "compact" false) }}
+      {{- end }}
+    </ol>
+
+    {{- with $earlier }}
+      <details class="xp-earlier">
+        <summary class="xp-earlier-toggle">
+          <span>Earlier roles</span>
+          <span class="xp-earlier-count">{{ len . }}</span>
+        </summary>
+        <ol class="xp-list xp-list-compact">
+          {{- range . }}
+            {{ partial "experience-timeline/item.html" (dict "exp" . "compact" true) }}
+          {{- end }}
+        </ol>
+      </details>
+    {{- end }}
+  </div>
+</div>

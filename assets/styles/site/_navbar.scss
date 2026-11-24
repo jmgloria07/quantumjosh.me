@@ -1,0 +1,157 @@
+// Top navbar: solid bar with a hairline border instead of a drop shadow.
+// Markup and the transparent-over-hero behaviour come from the theme (navbar.html / navbar.js).
+// Scoped under html[data-theme] (always set by the theme) to outrank its dark-mode rules.
+
+html[data-theme] .top-navbar {
+  background-color: var(--qj-page);
+  border-bottom: 1px solid var(--qj-border);
+
+  &.shadow {
+    box-shadow: none !important;
+  }
+
+  .navbar-brand {
+    color: var(--qj-heading);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  li a,
+  .nav-link {
+    color: var(--qj-text);
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: color var(--qj-fast) var(--qj-ease), border-color var(--qj-fast) var(--qj-ease);
+
+    // The theme's hover/active mixin uses !important colors and a tinted background.
+    &:hover {
+      color: var(--qj-accent) !important;
+      border-bottom-color: transparent !important;
+      background: transparent;
+    }
+  }
+
+  // Set by site.js for the section currently in view.
+  .navbar-nav .nav-link.active {
+    color: var(--qj-accent) !important;
+    border-bottom-color: var(--qj-accent) !important;
+    background: transparent;
+  }
+
+  // Over the dark hero the bar is transparent; keep it readable there.
+  &.transparent-navbar {
+    border-bottom-color: transparent;
+
+    .navbar-brand,
+    li a,
+    .nav-link {
+      color: $qj-hero-text;
+    }
+
+    .nav-link:hover {
+      color: $qj-hero-accent !important;
+    }
+
+    .navbar-nav .nav-link.active {
+      color: $qj-hero-accent !important;
+      border-bottom-color: $qj-hero-accent !important;
+    }
+  }
+
+  // Mobile menu: a full-width solid panel with comfortable tap targets.
+  @media (max-width: 991.98px) {
+    .navbar-collapse.show,
+    .navbar-collapse.collapsing {
+      background-color: var(--qj-page) !important;
+      border-top: 1px solid var(--qj-border);
+      margin-inline: calc(var(--bs-gutter-x, 1.5rem) * -0.5);
+      padding: 0.5rem 1rem 1rem !important;
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        color: var(--qj-text) !important;
+        border-bottom: 1px solid var(--qj-border);
+      }
+
+      .nav-link.active {
+        color: var(--qj-accent) !important;
+        border-bottom-color: var(--qj-border);
+        box-shadow: inset 3px 0 0 var(--qj-accent);
+        padding-left: 0.75rem;
+      }
+    }
+
+    // Opening the menu over the hero should not leave a transparent bar.
+    &.transparent-navbar:has(.navbar-collapse.show) {
+      background-color: var(--qj-page) !important;
+
+      .navbar-brand {
+        color: var(--qj-heading);
+      }
+
+      .feather-menu {
+        stroke: var(--qj-heading);
+      }
+    }
+  }
+
+  // Menu toggle: a full 44px touch target.
+  .navbar-toggler {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // Show the full navbar from 992px (laptops), not the theme's 1200px.
+  // Mirrors Bootstrap's .navbar-expand-* rules and undoes the theme's
+  // collapsed-state styles, which it applies below 1280px.
+  @media (min-width: 992px) {
+    &.navbar-expand-xl {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      height: 50px;
+      padding-top: 0.4rem;
+      padding-bottom: 0;
+
+      .container {
+        max-width: 960px;
+      }
+
+      .navbar-toggler {
+        display: none;
+      }
+
+      .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+        margin-top: -5px;
+      }
+
+      .navbar-nav {
+        flex-direction: row;
+
+        .nav-link {
+          padding-inline: 0.5rem;
+        }
+
+        .dropdown-menu {
+          position: absolute;
+        }
+      }
+
+      #themeMenu {
+        width: 25px;
+      }
+    }
+  }
+
+  @media (min-width: 1200px) and (max-width: 1279.98px) {
+    &.navbar-expand-xl .container {
+      max-width: 1140px;
+    }
+  }
+}

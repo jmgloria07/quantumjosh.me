@@ -1,0 +1,75 @@
+{{- /*
+  Site-owned hero. OVERRIDES the theme's layouts/partials/sections/home.html.
+  Keeps the theme's typing-carousel markup (#typed, #typing-carousel-data) so the
+  theme's TypeIt script (assets/scripts/pages/home.js) keeps working.
+  Re-check this file after theme upgrades.
+*/ -}}
+{{- $author := hugo.Data.author -}}
+{{- with (index hugo.Data site.Language.Lang).author }}{{ $author = . }}{{ end -}}
+{{- $name := $author.nickname | default $author.name | default site.Title -}}
+
+{{- $sections := hugo.Data.sections -}}
+{{- with (index hugo.Data site.Language.Lang).sections }}{{ $sections = . }}{{ end -}}
+
+{{- /* "View projects" targets the projects section if enabled, otherwise the first section. */ -}}
+{{- $enabled := where (sort $sections "section.weight") ".section.enable" true -}}
+{{- $primaryTarget := "" -}}
+{{- range $enabled }}{{ if eq .section.id "projects" }}{{ $primaryTarget = .section.id }}{{ end }}{{ end -}}
+{{- if and (not $primaryTarget) $enabled }}{{ $primaryTarget = (index $enabled 0).section.id }}{{ end -}}
+
+{{- $avatar := resources.Get ($author.image | default "/images/default-avatar.png") -}}
+{{- if and $avatar (not (in (slice "svg" "gif") $avatar.MediaType.SubType)) }}
+  {{- $avatar = $avatar.Fit "264x264" }}
+{{- end -}}
+
+{{- $contact := $author.contactInfo -}}
+
+<section class="hero" id="home" aria-label="Introduction">
+  <div class="container hero-inner">
+    {{- with $avatar }}
+      <img class="hero-avatar" src="{{ .RelPermalink }}" width="132" height="132" alt="{{ $author.name }}" />
+    {{- end }}
+
+    <h1 class="hero-title">{{ $author.greeting }} <span class="hero-name">{{ $name }}</span></h1>
+
+    {{- with $author.subtitle }}
+      <p class="hero-role">{{ . }}</p>
+    {{- end }}
+
+    {{- with $author.summary }}
+      <p class="hero-tagline">
+        <span class="hero-prompt" aria-hidden="true">&gt;</span>
+        <span id="typed" class="typed" aria-hidden="true"></span>
+        <span class="hero-tagline-static" aria-hidden="true">{{ index . 0 }}</span>
+        <span class="visually-hidden">{{ delimit . ". " }}.</span>
+      </p>
+      <ul id="typing-carousel-data">
+        {{- range . }}
+          <li>{{ . }}</li>
+        {{- end }}
+      </ul>
+    {{- end }}
+
+    <div class="hero-actions">
+      {{- with $primaryTarget }}
+        <a class="hero-btn hero-btn-primary" href="#{{ . }}">View projects</a>
+      {{- end }}
+      {{- with $contact.email }}
+        <a class="hero-btn" href="mailto:{{ . }}">
+          <i class="fas fa-envelope" aria-hidden="true"></i><span>Get in touch</span>
+        </a>
+      {{- end }}
+    </div>
+
+    {{- if or $contact.github $contact.linkedin }}
+      <ul class="hero-social">
+        {{- with $contact.github }}
+          <li><a href="https://github.com/{{ . }}" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+        {{- end }}
+        {{- with $contact.linkedin }}
+          <li><a href="https://www.linkedin.com/in/{{ . }}/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+        {{- end }}
+      </ul>
+    {{- end }}
+  </div>
+</section>

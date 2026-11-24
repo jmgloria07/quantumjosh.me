@@ -1,0 +1,55 @@
+// Footer (theme markup: layouts/partials/footer.html). Stays dark in both themes.
+
+html[data-theme] .footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  h5 {
+    font-family: $qj-mono;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #e2e8f0;
+  }
+
+  a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color var(--qj-fast) var(--qj-ease);
+
+    &:hover {
+      color: $qj-hero-accent;
+    }
+  }
+
+  ul li {
+    padding-block: 0.2rem;
+  }
+
+  // On touch screens, give footer links a 44px tap height. Desktop keeps the compact list.
+  @media (pointer: coarse) {
+    ul li {
+      padding-block: 0;
+    }
+
+    ul a,
+    #theme,
+    #hugo {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  // Copyright line: the theme's muted color is too dim on this background.
+  p,
+  p:first-child {
+    color: #94a3b8;
+  }
+
+  hr {
+    border-color: rgba(255, 255, 255, 0.08);
+    opacity: 1;
+  }
+}

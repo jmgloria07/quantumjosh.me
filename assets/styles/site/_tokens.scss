@@ -1,0 +1,87 @@
+// Design tokens shared by every site-owned component.
+// Light values live on :root, dark values on html[data-theme='dark'] (set by the theme's switcher).
+
+$qj-mono: ui-monospace, SFMono-Regular, 'Cascadia Code', Consolas, 'Liberation Mono', monospace;
+
+// Hero is dark in both themes, so its palette is fixed.
+$qj-hero-bg: #0b1220;
+$qj-hero-text: #cbd5e1;
+$qj-hero-heading: #f8fafc;
+$qj-hero-muted: #94a3b8;
+$qj-hero-accent: #22d3ee;
+
+:root {
+  --qj-page: #ffffff;
+  --qj-page-alt: #f8fafc;
+  --qj-surface: #ffffff;
+  --qj-border: rgba(15, 23, 42, 0.08);
+  --qj-border-strong: rgba(15, 23, 42, 0.16);
+  --qj-heading: #{get-light-color('heading-color')};
+  --qj-text: #{get-light-color('text-color')};
+  --qj-muted: #{get-light-color('muted-text-color')};
+  // Theme accent (#0891b2) is too light for small text and white-on-accent; cyan-700 passes WCAG AA.
+  --qj-accent: #0e7490;
+  --qj-accent-soft: rgba(8, 145, 178, 0.1);
+  --qj-accent-border: rgba(8, 145, 178, 0.35);
+  --qj-on-accent: #ffffff;
+  --qj-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 0.5rem 1.5rem rgba(15, 23, 42, 0.06);
+  --qj-shadow-hover: 0 1px 2px rgba(15, 23, 42, 0.06), 0 0.75rem 2rem rgba(15, 23, 42, 0.12);
+  --qj-radius: 0.75rem;
+  --qj-radius-sm: 0.5rem;
+  --qj-section-pad: 5rem;
+  --qj-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --qj-fast: 0.18s;
+}
+
+html[data-theme='dark'] {
+  --qj-page: #0f172a;
+  --qj-page-alt: #111827;
+  --qj-surface: #{get-dark-color('bg-card')};
+  --qj-border: rgba(255, 255, 255, 0.08);
+  --qj-border-strong: rgba(255, 255, 255, 0.16);
+  --qj-heading: #{get-dark-color('heading-color')};
+  --qj-text: #{get-dark-color('text-color')};
+  --qj-muted: #{get-dark-color('muted-text-color')};
+  --qj-accent: #22d3ee;
+  --qj-accent-soft: rgba(34, 211, 238, 0.08);
+  --qj-accent-border: rgba(34, 211, 238, 0.3);
+  --qj-on-accent: #0f172a;
+  --qj-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+  --qj-shadow-hover: 0 0.75rem 2rem rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 767.98px) {
+  :root {
+    --qj-section-pad: 3.5rem;
+  }
+}
+
+// Shared card look for skills, experience and projects.
+@mixin qj-card {
+  background: var(--qj-surface);
+  border: 1px solid var(--qj-border);
+  border-radius: var(--qj-radius);
+  box-shadow: var(--qj-shadow);
+}
+
+@mixin qj-card-hover {
+  transition: transform var(--qj-fast) var(--qj-ease), box-shadow var(--qj-fast) var(--qj-ease);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--qj-shadow-hover);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+@mixin qj-focus-ring {
+  outline: 2px solid var(--qj-accent);
+  outline-offset: 2px;
+}

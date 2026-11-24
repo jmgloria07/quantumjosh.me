@@ -4,6 +4,11 @@ section:
   enable: true
   weight: 3
   showOnNavbar: true
+  # Site-owned timeline; the first expandedCount companies are shown in full,
+  # the rest under an "Earlier roles" toggle.
+  template: sections/experience-timeline.html
+
+expandedCount: 3
 
 experiences:
 - company:

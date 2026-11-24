@@ -4,7 +4,8 @@ section:
   enable: true
   weight: 1
   showOnNavbar: true
-  template: sections/about.html
+  # Site-owned layout: bio, social links and certification badges.
+  template: sections/about-profile.html
 
 designation: Web API developer, huge geek
 
@@ -42,18 +43,3 @@ badges:
   name: Certified SAFe® 5 Scrum Master (expired)
   url: "https://www.credly.com/badges/d87c2b17-760d-4473-9b12-5a9457d2a7e2"
   badge: "https://images.credly.com/size/340x340/images/7a30a2e5-82bb-406b-b0f8-52fd846eac69/cert_mark_SSM_badge_large_300px.png"
-
-- type: soft-skill-indicator
-  name: Leadership
-  percentage: 85
-  color: blue
-
-- type: soft-skill-indicator
-  name: Team Work
-  percentage: 90
-  color: yellow
-
-- type: soft-skill-indicator
-  name: Flexibility
-  percentage: 95
-  color: orange

@@ -1,0 +1,24 @@
+{{- /*
+  Overview and responsibilities for one company. Context: the experience entry.
+  With several positions at one company, each gets its own title and dates.
+*/ -}}
+{{- with .company.overview }}
+  <p class="xp-overview">{{ . | markdownify }}</p>
+{{- end }}
+
+{{- $multiple := gt (len .positions) 1 -}}
+{{- range .positions }}
+  {{- if $multiple }}
+    <div class="xp-position">
+      <h3 class="xp-position-title">{{ .designation }}</h3>
+      <p class="xp-dates">{{ .start }} – {{ .end | default (i18n "present") }}</p>
+    </div>
+  {{- end }}
+  {{- with .responsibilities }}
+    <ul class="xp-points">
+      {{- range . }}
+        <li>{{ . | markdownify }}</li>
+      {{- end }}
+    </ul>
+  {{- end }}
+{{- end }}

@@ -1,0 +1,95 @@
+// Page-level rhythm: section surfaces, spacing, titles, focus and the scroll reveal.
+
+body {
+  background-color: var(--qj-page);
+  color: var(--qj-text);
+}
+
+// Softer section alternation than the theme's (which uses !important utilities).
+.section-holder {
+  padding-block: var(--qj-section-pad);
+  border-top: 1px solid var(--qj-border);
+
+  &.bg-primary {
+    background-color: var(--qj-page) !important;
+  }
+
+  &.bg-secondary {
+    background-color: var(--qj-page-alt) !important;
+  }
+
+  // Theme sections add their own bottom padding; the holder owns spacing now.
+  > .anchor {
+    padding-bottom: 0 !important;
+  }
+
+  // Section titles: "// Title" with a short accent rule.
+  > div > h1 {
+    color: var(--qj-heading);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 2.75rem;
+
+    &::before {
+      content: '// ';
+      color: var(--qj-accent);
+      font-family: $qj-mono;
+      font-size: 0.8em;
+      font-weight: 500;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: 3rem;
+      height: 3px;
+      margin: 0.85rem auto 0;
+      border-radius: 3px;
+      background: var(--qj-accent);
+    }
+  }
+}
+
+// Keep anchored sections clear of the fixed navbar. Replaces the theme's
+// `:target::before` spacer hack, which would otherwise add a second offset.
+[id] {
+  scroll-margin-top: 4rem;
+}
+
+.anchor:target::before,
+#home:target::before {
+  content: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  @include qj-focus-ring;
+}
+
+// Scroll reveal. Content is only hidden once site.js has added html.js-reveal
+// (it skips that under prefers-reduced-motion), so no-JS visitors see everything.
+html.js-reveal .section-holder > * {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s var(--qj-ease), transform 0.45s var(--qj-ease);
+}
+
+html.js-reveal .section-holder > .is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js-reveal .section-holder > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
