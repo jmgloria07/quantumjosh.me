@@ -1,3 +1,23 @@
 copyright: ©reated and built with love by Josh
 
-description: Josh Gloria is a Senior Java Developer and backend-focused software engineer working on enterprise applications and distributed systems with Java, Spring Boot, and AWS.
+# Meta description (about 160 characters max; shown in search results and link previews).
+description: Josh Gloria is a Senior Java Developer and backend engineer building enterprise applications and distributed systems with Java, Spring Boot and AWS.
+
+# Search and social metadata for the homepage (layouts/index.html, layouts/partials/seo/).
+seo:
+  # The <title>; keep it under about 60 characters.
+  title: "Josh Gloria – Senior Java Developer | Quantum Josh"
+  # 1200x630 link-preview image, path under assets/.
+  image: images/site/social-card.png
+  imageAlt: "Quantum Josh: Josh Gloria, Senior Java Developer and backend engineer"
+  # Topics for the Person structured data.
+  knowsAbout:
+    - Java
+    - Spring Boot
+    - Microservices
+    - MySQL
+    - Redis
+    - ELK Stack
+    - AWS
+    - Docker
+    - AI-assisted development

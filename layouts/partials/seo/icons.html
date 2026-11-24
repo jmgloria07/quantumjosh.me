@@ -1,0 +1,11 @@
+{{- /*
+  Favicons: a 32px PNG from the author image, plus a pre-rendered 180px
+  apple-touch-icon with a solid background (iOS fills transparency with black).
+*/ -}}
+{{- with resources.Get "images/author/josh.png" }}
+  {{- $icon := .Process "fit 32x32 png" }}
+<link rel="icon" type="image/png" sizes="32x32" href="{{ $icon.RelPermalink }}" />
+{{- end }}
+{{- with resources.Get "images/site/apple-touch-icon.png" }}
+<link rel="apple-touch-icon" sizes="180x180" href="{{ .RelPermalink }}" />
+{{- end }}

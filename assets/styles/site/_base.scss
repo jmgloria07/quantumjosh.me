@@ -24,7 +24,7 @@ body {
   }
 
   // Section titles: "// Title" with a short accent rule.
-  > div > h1 {
+  > div > .section-title {
     color: var(--qj-heading);
     font-size: clamp(1.75rem, 3vw, 2.25rem);
     font-weight: 700;
@@ -71,6 +71,35 @@ body {
 
 :focus-visible {
   @include qj-focus-ring;
+}
+
+// Inline Font Awesome SVGs (layouts/partials/icon.html), sized like the icon font.
+.qj-icon {
+  display: inline-block;
+  width: auto;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+  fill: currentColor;
+}
+
+// "Skip to content" link: hidden until focused with the keyboard.
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100000;
+  padding: 0.6rem 1rem;
+  border-radius: var(--qj-radius-sm);
+  background: var(--qj-accent);
+  color: var(--qj-on-accent) !important;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+// The skip-link target; it receives focus but shouldn't show a ring around the whole page.
+#main:focus {
+  outline: none;
 }
 
 // Scroll reveal. Content is only hidden once site.js has added html.js-reveal

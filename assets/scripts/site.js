@@ -1,4 +1,4 @@
-// Site-level enhancements, loaded after the theme bundle (layouts/partials/scripts.html).
+// Site-level enhancements, bundled into the main script by assets/scripts/application.js.
 // Everything here is progressive: without JS the page is fully readable.
 
 const root = document.documentElement

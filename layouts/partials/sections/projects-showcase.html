@@ -8,7 +8,7 @@
 {{- $others := where .projects "featured" "!=" true -}}
 
 <div class="container-fluid anchor pb-5 projects-showcase" id="{{ $sectionID }}">
-  <h1 class="text-center"{{ if .section.hideTitle }} style="display: none"{{ end }}>{{ .section.name }}</h1>
+  <h2 class="section-title text-center" id="{{ $sectionID }}-title"{{ if .section.hideTitle }} style="display: none"{{ end }}>{{ .section.name }}</h2>
 
   <div class="container">
     {{- range $featured }}
@@ -33,7 +33,7 @@
 
     {{- with $others }}
       {{- if $featured }}
-        <h2 class="project-group-title">More projects</h2>
+        <h3 class="project-group-title">More projects</h3>
       {{- end }}
       <div class="row g-4">
         {{- range . }}

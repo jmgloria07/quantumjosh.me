@@ -4,6 +4,8 @@ section:
   enable: true
   weight: 2
   showOnNavbar: true
+  # Site-owned card grid (layouts/partials/sections/skills-grid.html).
+  template: sections/skills-grid.html
 
 skills:
 - name: Java & Spring Boot

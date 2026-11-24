@@ -10,7 +10,7 @@
 {{- range .positions }}
   {{- if $multiple }}
     <div class="xp-position">
-      <h3 class="xp-position-title">{{ .designation }}</h3>
+      <h4 class="xp-position-title">{{ .designation }}</h4>
       <p class="xp-dates">{{ .start }} – {{ .end | default (i18n "present") }}</p>
     </div>
   {{- end }}

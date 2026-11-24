@@ -1,0 +1,27 @@
+{{- /*
+  Skills section: a grid of cards. Replaces the theme's sections/skills.html
+  (selected via `template:` in data/en/sections/skills.yaml) for a correct heading
+  outline (h2 section, h3 cards) and decorative icons. Keeps the theme's card classes
+  so its styles (and assets/styles/site/_skills.scss) still apply.
+  Supports `logo` (image under assets/), `icon` (Font Awesome classes), `summary`, `url`.
+*/ -}}
+{{- $sectionID := .section.id | default (replace (lower .section.name) " " "-") -}}
+
+<div class="container-fluid anchor skills-section" id="{{ $sectionID }}">
+  <h2 class="section-title text-center" id="{{ $sectionID }}-title"{{ if .section.hideTitle }} style="display: none"{{ end }}>{{ .section.name }}</h2>
+
+  <div class="container d-flex-block">
+    <ul class="row list-unstyled mb-0" id="primary-skills">
+      {{- range .skills }}
+        <li class="col-12 col-sm-6 col-lg-4 pt-2 filtr-item">
+          {{- $card := partial "skills-grid/card.html" . }}
+          {{- with .url }}
+            <a class="text-decoration-none skill-card-link" href="{{ . }}" target="_blank" rel="noopener">{{ $card }}</a>
+          {{- else }}
+            {{ $card }}
+          {{- end }}
+        </li>
+      {{- end }}
+    </ul>
+  </div>
+</div>

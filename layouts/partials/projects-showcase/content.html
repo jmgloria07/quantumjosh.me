@@ -1,10 +1,10 @@
 {{- /*
   Shared body of a project card. Context: dict "project" <project data> "featured" <bool>.
-  Featured projects use an h2 title, secondary projects an h3.
+  Featured projects use an h3 title, secondary projects an h4 (section title is h2).
 */ -}}
 {{- $p := .project -}}
 {{- $featured := .featured -}}
-{{- $titleTag := cond $featured "h2" "h3" -}}
+{{- $titleTag := cond $featured "h3" "h4" -}}
 
 <div class="project-meta">
   {{- if $featured }}<span class="project-badge">Featured</span>{{ end }}
@@ -48,13 +48,13 @@
 <div class="project-links">
   {{- with $p.demo }}
     <a class="project-link project-link-primary" href="{{ . }}" target="_blank" rel="noopener">
-      <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      {{ partial "icon.html" "fas fa-arrow-up-right-from-square" }}
       <span>Live demo<span class="visually-hidden"> of {{ $p.name }}</span></span>
     </a>
   {{- end }}
   {{- range $p.repos }}
     <a class="project-link" href="{{ .url }}" target="_blank" rel="noopener">
-      <i class="fab fa-github" aria-hidden="true"></i>
+      {{ partial "icon.html" "fab fa-github" }}
       <span>{{ .label | default "GitHub" }}<span class="visually-hidden"> repository for {{ $p.name }}</span></span>
     </a>
   {{- end }}

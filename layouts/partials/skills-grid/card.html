@@ -1,0 +1,18 @@
+{{- /* One skill card. Context: a skill entry. The icon is decorative: the title names the card. */ -}}
+<div class="card">
+  <div class="card-head d-flex">
+    {{- with .logo }}
+      {{- with resources.Get . }}
+        {{- $img := . }}
+        {{- if not (in (slice "svg" "gif") .MediaType.SubType) }}{{ $img = .Process "fit 48x48 webp q90" }}{{ end }}
+        <img class="card-img-xs" src="{{ $img.RelPermalink }}" alt="" width="24" height="24" />
+      {{- end }}
+    {{- else }}
+      {{- with .icon }}<span class="card-icon">{{ partial "icon.html" . }}</span>{{ end }}
+    {{- end }}
+    <h3 class="card-title">{{ .name }}</h3>
+  </div>
+  <div class="card-body text-justify pt-1 pb-1">
+    <p class="card-text">{{ .summary | markdownify }}</p>
+  </div>
+</div>

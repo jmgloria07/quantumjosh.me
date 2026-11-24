@@ -1,0 +1,65 @@
+{{- /*
+  Homepage. OVERRIDES the theme's layouts/index.html to add:
+    - a descriptive <title> and full social/structured metadata (data/en/site.yaml → seo)
+    - a "Skip to content" link, a <main> landmark and <section> landmarks named by their titles
+  Section rendering (alternating backgrounds, per-section templates) matches the theme.
+  Re-check this file after theme upgrades.
+*/ -}}
+{{- $data := index hugo.Data site.Language.Lang -}}
+{{- $seo := $data.site.seo | default dict -}}
+{{- $title := $seo.title | default site.Title -}}
+{{- $description := $data.site.description | default site.Params.description -}}
+{{- $sections := $data.sections | default hugo.Data.sections -}}
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale | default site.Language.Lang }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $description }}" />
+    <link rel="canonical" href="{{ .Permalink }}" />
+    <meta name="theme-color" content="#0b1220" />
+
+    {{ partial "helpers/style-bundle.html" . }}
+    {{ partial "seo/icons.html" . }}
+    {{ partial "seo/social.html" (dict "page" . "title" $title "description" $description "seo" $seo) }}
+    {{ partial "seo/structured-data.html" (dict "page" . "description" $description "seo" $seo) }}
+    {{- partial "robots.html" . -}}
+    {{- partial "analytics.html" . -}}
+
+    {{- /* Applies the saved light/dark choice before first paint (from the theme). */}}
+    {{ with resources.Get "scripts/core/theme-scheme.js" }}
+    <script>{{ .Content | safeJS }}</script>
+    {{ end }}
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#top-navbar" data-bs-offset="100">
+    <a class="skip-link visually-hidden-focusable" href="#main">Skip to content</a>
+
+    {{- partial "navigators/navbar.html" . -}}
+
+    <main id="main" tabindex="-1">
+      {{- partial "sections/home.html" . -}}
+
+      {{- $background := "bg-primary" }}
+      {{- range sort $sections "section.weight" }}
+        {{- if .section.enable }}
+          {{- $id := .section.id | default (replace (lower .section.name) " " "-") }}
+          <section class="container-fluid section-holder d-flex {{ $background }}" aria-labelledby="{{ $id }}-title">
+            {{- if .section.template }}
+              {{- partial .section.template . -}}
+            {{- else }}
+              {{- partial (printf "sections/%s.html" (replace (lower .section.id) " " "-")) . -}}
+            {{- end }}
+          </section>
+          {{- $background = cond (eq $background "bg-primary") "bg-secondary" "bg-primary" }}
+        {{- end }}
+      {{- end }}
+    </main>
+
+    {{- $footerTemplate := site.Params.footer.template | default "footer.html" }}
+    {{- partial $footerTemplate . -}}
+
+    {{ partial "scripts.html" . }}
+    {{- partial "misc/support.html" . -}}
+  </body>
+</html>

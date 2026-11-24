@@ -1,0 +1,50 @@
+{{- /*
+  schema.org JSON-LD for the homepage: WebSite + ProfilePage whose main entity is a Person.
+  Built from data: author.yaml (name, image, contact), the current role in
+  experiences.yaml (the first position without an end date), social links in about.yaml,
+  and seo.knowsAbout in site.yaml. Context: dict "page" "description" "seo".
+*/ -}}
+{{- $page := .page -}}
+{{- $data := index hugo.Data site.Language.Lang -}}
+{{- $author := $data.author | default hugo.Data.author -}}
+{{- $sections := $data.sections | default hugo.Data.sections -}}
+{{- $home := site.Home.Permalink -}}
+{{- $personID := printf "%s#person" $home -}}
+
+{{- $person := dict "@type" "Person" "@id" $personID "name" $author.name "url" $home -}}
+{{- with $author.nickname }}{{ $person = merge $person (dict "alternateName" .) }}{{ end -}}
+{{- with $author.image }}{{ with resources.Get . }}{{ $person = merge $person (dict "image" .Permalink) }}{{ end }}{{ end -}}
+{{- with .description }}{{ $person = merge $person (dict "description" .) }}{{ end -}}
+{{- with .seo.knowsAbout }}{{ $person = merge $person (dict "knowsAbout" .) }}{{ end -}}
+
+{{- /* Current role: the first experience whose newest position has no end date. */ -}}
+{{- with $sections.experiences }}{{ if .section.enable -}}
+  {{- $current := slice -}}
+  {{- range .experiences }}{{ $exp := . }}{{ with index (first 1 .positions) 0 }}{{ if not .end }}{{ $current = $current | append $exp }}{{ end }}{{ end }}{{ end -}}
+  {{- with index $current 0 -}}
+    {{- $role := index (first 1 .positions) 0 -}}
+    {{- $org := dict "@type" "Organization" "name" .company.name -}}
+    {{- with .company.url }}{{ $org = merge $org (dict "url" .) }}{{ end -}}
+    {{- $person = merge $person (dict "jobTitle" $role.designation "worksFor" $org) -}}
+  {{- end -}}
+{{- end }}{{ end -}}
+
+{{- /* Public profiles: the web links in the about section (falls back to author contact info). */ -}}
+{{- $sameAs := slice -}}
+{{- with $sections.about }}{{ range .socialLinks -}}
+  {{- if hasPrefix .url "http" }}{{ $sameAs = $sameAs | append .url }}{{ end -}}
+{{- end }}{{ end -}}
+{{- if not $sameAs }}{{ with $author.contactInfo -}}
+  {{- with .github }}{{ $sameAs = $sameAs | append (printf "https://github.com/%s" .) }}{{ end -}}
+  {{- with .linkedin }}{{ $sameAs = $sameAs | append (printf "https://www.linkedin.com/in/%s/" .) }}{{ end -}}
+{{- end }}{{ end -}}
+{{- with $sameAs }}{{ $person = merge $person (dict "sameAs" .) }}{{ end -}}
+
+{{- $website := dict "@type" "WebSite" "@id" (printf "%s#website" $home) "name" site.Title "url" $home "inLanguage" (site.Language.Locale | default site.Language.Lang) -}}
+{{- with .description }}{{ $website = merge $website (dict "description" .) }}{{ end -}}
+{{- $website = merge $website (dict "publisher" (dict "@id" $personID)) -}}
+
+{{- $profile := dict "@type" "ProfilePage" "@id" (printf "%s#profile" $home) "url" $page.Permalink "name" site.Title "isPartOf" (dict "@id" (printf "%s#website" $home)) "mainEntity" $person -}}
+
+{{- $graph := dict "@context" "https://schema.org" "@graph" (slice $website $profile) -}}
+<script type="application/ld+json">{{ $graph | jsonify | safeJS }}</script>

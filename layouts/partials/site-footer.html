@@ -1,0 +1,59 @@
+{{- /*
+  Site footer (selected via params.footer.template in config.yaml; replaces the theme's footer.html).
+  Section navigation, contact links and credits.
+*/ -}}
+{{- $data := index hugo.Data site.Language.Lang -}}
+{{- $author := $data.author | default hugo.Data.author -}}
+{{- $sections := $data.sections | default hugo.Data.sections -}}
+{{- $contact := $author.contactInfo -}}
+{{- $copyright := $data.site.copyright -}}
+{{- $homeURL := cond .IsHome "" ("" | absLangURL) -}}
+
+<footer id="footer" class="footer site-footer">
+  <div class="container">
+    <div class="row gy-4">
+      <nav class="col-sm-6 col-lg-4" aria-labelledby="footer-nav-title">
+        <h2 class="site-footer-title" id="footer-nav-title">Navigation</h2>
+        <ul class="site-footer-list">
+          {{- range sort $sections "section.weight" }}
+            {{- if and .section.enable .section.showOnNavbar }}
+              <li><a href="{{ $homeURL }}#{{ .section.id }}">{{ .section.name }}</a></li>
+            {{- end }}
+          {{- end }}
+        </ul>
+      </nav>
+
+      {{- with $contact }}
+        <div class="col-sm-6 col-lg-4">
+          <h2 class="site-footer-title" id="footer-contact-title">Contact</h2>
+          <ul class="site-footer-list" aria-labelledby="footer-contact-title">
+            {{- with .email }}
+              <li><a href="mailto:{{ . }}">{{ partial "icon.html" "fas fa-envelope" }}<span>{{ . }}</span></a></li>
+            {{- end }}
+            {{- with .github }}
+              <li><a href="https://github.com/{{ . }}" target="_blank" rel="noopener">{{ partial "icon.html" "fab fa-github" }}<span>{{ . }}<span class="visually-hidden"> on GitHub</span></span></a></li>
+            {{- end }}
+            {{- with .linkedin }}
+              <li><a href="https://www.linkedin.com/in/{{ . }}/" target="_blank" rel="noopener">{{ partial "icon.html" "fab fa-linkedin" }}<span>{{ $author.name }}<span class="visually-hidden"> on LinkedIn</span></span></a></li>
+            {{- end }}
+          </ul>
+        </div>
+      {{- end }}
+    </div>
+
+    <div class="site-footer-bottom">
+      {{- with $copyright }}
+        {{- /* The "©reated" pun reads as "copyright reated" to screen readers; give them plain text. */}}
+        <p class="site-footer-copyright">
+          <span aria-hidden="true">{{ . }}</span>
+          <span class="visually-hidden">{{ replace . "©reated" "Created" }}</span>
+        </p>
+      {{- end }}
+      <p class="site-footer-credits">
+        Theme: <a href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">Toha</a>
+        <span aria-hidden="true">·</span>
+        Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+      </p>
+    </div>
+  </div>
+</footer>

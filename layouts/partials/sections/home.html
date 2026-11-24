@@ -56,7 +56,7 @@
       {{- end }}
       {{- with $contact.email }}
         <a class="hero-btn" href="mailto:{{ . }}">
-          <i class="fas fa-envelope" aria-hidden="true"></i><span>Get in touch</span>
+          {{ partial "icon.html" "fas fa-envelope" }}<span>Get in touch</span>
         </a>
       {{- end }}
     </div>
@@ -64,10 +64,10 @@
     {{- if or $contact.github $contact.linkedin }}
       <ul class="hero-social">
         {{- with $contact.github }}
-          <li><a href="https://github.com/{{ . }}" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+          <li><a href="https://github.com/{{ . }}" target="_blank" rel="noopener" aria-label="GitHub">{{ partial "icon.html" "fab fa-github" }}</a></li>
         {{- end }}
         {{- with $contact.linkedin }}
-          <li><a href="https://www.linkedin.com/in/{{ . }}/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/{{ . }}/" target="_blank" rel="noopener" aria-label="LinkedIn">{{ partial "icon.html" "fab fa-linkedin" }}</a></li>
         {{- end }}
       </ul>
     {{- end }}

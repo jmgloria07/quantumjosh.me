@@ -32,14 +32,14 @@ badges:
 - type: certification
   name: AWS Certified Solutions Architect – Associate
   url: "https://www.credly.com/earner/earned/badge/fdd4a2a8-65d8-4de1-a402-241efd7dffd4"
-  badge: "https://images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png"
+  badge: images/badges/aws-solutions-architect-associate.png
 
 - type: certification
   name: Certified SAFe® 6 Practitioner
   url: "https://www.credly.com/earner/earned/badge/95e3359c-7759-4de4-b472-fcc8d0c23312"
-  badge: "https://images.credly.com/images/08703175-4b43-4c72-9075-5c03a9ebe5d0/image.png"
+  badge: images/badges/safe-6-practitioner.png
 
 - type: certification
   name: Certified SAFe® 5 Scrum Master (expired)
   url: "https://www.credly.com/badges/d87c2b17-760d-4473-9b12-5a9457d2a7e2"
-  badge: "https://images.credly.com/size/340x340/images/7a30a2e5-82bb-406b-b0f8-52fd846eac69/cert_mark_SSM_badge_large_300px.png"
+  badge: images/badges/safe-5-scrum-master.png

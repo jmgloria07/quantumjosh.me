@@ -1,0 +1,24 @@
+{{- /*
+  Inline a Font Awesome SVG icon at build time (no icon JS is shipped).
+  Context: a Font Awesome class string, e.g. "fab fa-github", "fas fa-envelope",
+  "fa-solid fa-location-dot". The SVGs come from the installed
+  @fortawesome/fontawesome-free package, mounted at assets/vendor/fontawesome.
+  Icons are decorative (aria-hidden): give the surrounding link or text the accessible name.
+*/ -}}
+{{- $classes := split (trim . " ") " " -}}
+{{- $style := "solid" -}}
+{{- $name := "" -}}
+{{- range $classes -}}
+  {{- if in (slice "fab" "fa-brands") . }}{{ $style = "brands" }}
+  {{- else if in (slice "far" "fa-regular") . }}{{ $style = "regular" }}
+  {{- else if in (slice "fas" "fa-solid" "fa") . }}{{ $style = "solid" }}
+  {{- else if hasPrefix . "fa-" }}{{ $name = strings.TrimPrefix "fa-" . }}
+  {{- end -}}
+{{- end -}}
+{{- with resources.Get (printf "vendor/fontawesome/%s/%s.svg" $style $name) -}}
+  {{- $svg := .Content | replaceRE `<!--[\s\S]*?-->` "" -}}
+  {{- $svg = replace $svg "<svg " (printf `<svg class="qj-icon qj-icon-%s" aria-hidden="true" focusable="false" ` $name) -}}
+  {{- $svg | safeHTML -}}
+{{- else -}}
+  {{- warnf "icon.html: no Font Awesome icon for %q" $ -}}
+{{- end -}}

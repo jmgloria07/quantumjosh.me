@@ -9,12 +9,12 @@
 {{- $certs := where (.badges | default slice) "type" "certification" -}}
 
 <div class="container anchor about-section about-profile" id="{{ $sectionID }}">
-  <h1 class="text-center"{{ if .section.hideTitle }} style="display: none"{{ end }}>{{ .section.name }}</h1>
+  <h2 class="section-title text-center" id="{{ $sectionID }}-title"{{ if .section.hideTitle }} style="display: none"{{ end }}>{{ .section.name }}</h2>
 
   {{- /* gx-4: a wider horizontal gutter would overflow the container's padding. */}}
   <div class="row gx-4 gy-5 align-items-start">
     <div class="{{ if $certs }}col-lg-7{{ else }}col-12{{ end }}">
-      <h2 class="about-name">{{ $author.name }}</h2>
+      <h3 class="about-name">{{ $author.name }}</h3>
       {{- with .designation }}
         <p class="about-designation">{{ . }}</p>
       {{- end }}
@@ -29,7 +29,7 @@
             <li>
               <a href="{{ $href }}" aria-label="{{ .name }}" title="{{ .name }}"
                 {{- if not (hasPrefix $href "mailto:") }} target="_blank" rel="{{ .rel | default "noopener" }}"{{ end }}>
-                <i class="{{ .icon }}" aria-hidden="true"></i>
+                {{ partial "icon.html" .icon }}
               </a>
             </li>
           {{- end }}
@@ -54,8 +54,11 @@
         <ul class="about-badges">
           {{- range . }}
             <li>
-              <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .name }}">
-                <img src="{{ .badge }}" alt="{{ .name }}" width="112" height="112" loading="lazy" decoding="async" />
+              {{- /* Local badges (under assets/) are resized to WebP; full URLs are used as given. */}}
+              {{- $src := .badge }}
+              {{- with resources.Get .badge }}{{ $src = (.Process "fit 224x224 webp q85").RelPermalink }}{{ end }}
+              <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+                <img src="{{ $src }}" alt="{{ .name }} (Credly badge)" width="112" height="112" loading="lazy" decoding="async" />
               </a>
             </li>
           {{- end }}

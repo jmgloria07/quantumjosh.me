@@ -10,7 +10,7 @@
 {{- $earlier := after $expandedCount .experiences -}}
 
 <div class="container-fluid anchor experience-timeline" id="{{ $sectionID }}">
-  <h1 class="text-center"{{ if .section.hideTitle }} style="display: none"{{ end }}>{{ .section.name }}</h1>
+  <h2 class="section-title text-center" id="{{ $sectionID }}-title"{{ if .section.hideTitle }} style="display: none"{{ end }}>{{ .section.name }}</h2>
 
   <div class="container xp-container">
     <ol class="xp-list">
