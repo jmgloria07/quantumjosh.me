@@ -60,7 +60,7 @@ params:
   # GitHub repo of your site
   gitRepo: https://github.com/jmgloria07/quantumjosh.me
   # Default branch of your Git repo
-  gitBranch: main
+  gitBranch: master
 
   # Configure the number of section title visible in the top navbar
   topNavbar:
