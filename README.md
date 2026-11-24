@@ -51,4 +51,28 @@ If a style change doesn't show up, restart `hugo server`: it can keep serving a 
 
 ### Hosting
 
-`firebase.json` serves real 404s (no catch-all rewrite) and sets long cache lifetimes for the fingerprinted CSS/JS.
+Hosted on Firebase Hosting (project `quantumjoshdotme`, set in `.firebaserc`). `firebase.json` serves real 404s (no catch-all rewrite) and sets long cache lifetimes for the fingerprinted CSS/JS.
+
+**One-time setup:**
+
+```
+npm install -g firebase-tools
+firebase login
+```
+
+**Deploy:**
+
+```
+hugo --gc --minify --cleanDestinationDir
+firebase deploy --only hosting
+```
+
+`--cleanDestinationDir` empties `public/` first, so files from older builds don't get uploaded.
+
+**Preview before going live (optional):**
+
+```
+firebase hosting:channel:deploy preview
+```
+
+This prints a temporary URL. Run `firebase deploy --only hosting` once it looks right.

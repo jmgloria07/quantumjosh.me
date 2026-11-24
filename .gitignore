@@ -11,6 +11,8 @@ node_modules/
 
 # firebase
 .firebase/
+firebase-debug.log
+firebase-debug.*.log
 
 # Executable may be added to repository
 hugo.exe
