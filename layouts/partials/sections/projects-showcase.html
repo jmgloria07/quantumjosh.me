@@ -1,0 +1,49 @@
+{{- /*
+  Projects section with one or more featured projects followed by a grid of
+  secondary projects. Replaces the theme's filterable card grid.
+  Data: data/en/sections/projects.yaml (field reference at the top of that file).
+*/ -}}
+{{- $sectionID := .section.id | default (replace (lower .section.name) " " "-") -}}
+{{- $featured := where .projects "featured" true -}}
+{{- $others := where .projects "featured" "!=" true -}}
+
+<div class="container-fluid anchor pb-5 projects-showcase" id="{{ $sectionID }}">
+  <h1 class="text-center"{{ if .section.hideTitle }} style="display: none"{{ end }}>{{ .section.name }}</h1>
+
+  <div class="container">
+    {{- range $featured }}
+      {{- $project := . }}
+      <article class="project-featured" aria-labelledby="project-{{ anchorize .name }}">
+        <div class="row g-0">
+          <div class="col-lg-7 project-featured-body">
+            {{ partial "projects-showcase/content.html" (dict "project" . "featured" true) }}
+          </div>
+          {{- with .image }}
+            {{- with resources.Get . }}
+              {{- $img := .Resize "960x webp q82" }}
+              <div class="col-lg-5 order-first order-lg-last project-featured-media">
+                <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}"
+                  alt="{{ $project.imageAlt | default $project.name }}" loading="lazy" decoding="async" />
+              </div>
+            {{- end }}
+          {{- end }}
+        </div>
+      </article>
+    {{- end }}
+
+    {{- with $others }}
+      {{- if $featured }}
+        <h2 class="project-group-title">More projects</h2>
+      {{- end }}
+      <div class="row g-4">
+        {{- range . }}
+          <div class="col-md-6 col-xl-4 d-flex">
+            <article class="project-card w-100" aria-labelledby="project-{{ anchorize .name }}">
+              {{ partial "projects-showcase/content.html" (dict "project" . "featured" false) }}
+            </article>
+          </div>
+        {{- end }}
+      </div>
+    {{- end }}
+  </div>
+</div>

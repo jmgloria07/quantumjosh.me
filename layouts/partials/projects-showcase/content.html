@@ -1,0 +1,64 @@
+{{- /*
+  Shared body of a project card. Context: dict "project" <project data> "featured" <bool>.
+  Featured projects use an h2 title, secondary projects an h3.
+*/ -}}
+{{- $p := .project -}}
+{{- $featured := .featured -}}
+{{- $titleTag := cond $featured "h2" "h3" -}}
+
+<div class="project-meta">
+  {{- if $featured }}<span class="project-badge">Featured</span>{{ end }}
+  {{- with $p.role }}<span class="project-meta-item">{{ . }}</span>{{ end }}
+  {{- with $p.period }}<span class="project-meta-item">{{ . }}</span>{{ end }}
+</div>
+
+{{ printf "<%s class=\"project-title\" id=\"project-%s\">" $titleTag (anchorize $p.name) | safeHTML -}}
+  {{ $p.name }}
+{{- printf "</%s>" $titleTag | safeHTML }}
+
+<p class="project-summary">{{ $p.summary | markdownify }}</p>
+
+{{- with $p.problem }}
+  <p class="project-label">Problem</p>
+  <p class="project-text">{{ . | markdownify }}</p>
+{{- end }}
+
+{{- with $p.features }}
+  <p class="project-label">Key features</p>
+  <ul class="project-features">
+    {{- range . }}
+      <li>{{ . | markdownify }}</li>
+    {{- end }}
+  </ul>
+{{- end }}
+
+{{- with $p.note }}
+  <p class="project-note">{{ . | markdownify }}</p>
+{{- end }}
+
+{{- with $p.stack }}
+  <p class="project-label">Tech stack</p>
+  <ul class="project-stack" aria-label="Tech stack">
+    {{- range . }}
+      <li>{{ . }}</li>
+    {{- end }}
+  </ul>
+{{- end }}
+
+<div class="project-links">
+  {{- with $p.demo }}
+    <a class="project-link project-link-primary" href="{{ . }}" target="_blank" rel="noopener">
+      <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      <span>Live demo<span class="visually-hidden"> of {{ $p.name }}</span></span>
+    </a>
+  {{- end }}
+  {{- range $p.repos }}
+    <a class="project-link" href="{{ .url }}" target="_blank" rel="noopener">
+      <i class="fab fa-github" aria-hidden="true"></i>
+      <span>{{ .label | default "GitHub" }}<span class="visually-hidden"> repository for {{ $p.name }}</span></span>
+    </a>
+  {{- end }}
+  {{- if and (not $p.demo) $p.demoNote }}
+    <span class="project-link-note">{{ $p.demoNote }}</span>
+  {{- end }}
+</div>

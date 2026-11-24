@@ -4,53 +4,101 @@ section:
   enable: true
   weight: 4
   showOnNavbar: true
+  # Site-owned layout with featured and secondary project cards.
+  template: sections/projects-showcase.html
 
-buttons:
-- name: All
-  filter: "all"
-- name: API
-  filter: "api"
-- name: UI
-  filter: "ui"
-
-# your projects
+# Fields per project (all optional except name and summary):
+#   featured: true shows the project as a large card at the top.
+#   role, period, summary, problem, features (list), note, stack (list),
+#   repos (list of {label, url}), demo (URL), demoNote (shown when there is no demo),
+#   image + imageAlt (featured cards only, path under assets/).
 projects:
-- name: Quantum Josh
-  logo: /images/logo/main-logo.png
+- name: Tally
+  featured: true
   role: Owner
-  repo: https://github.com/jmgloria07/quantumjosh.me
-  summary: A personal portfolio web page of yours truly based on Hugo theme [Toha](https://github.com/hugo-toha/toha).
-  tags: ["hobby","hugo","ui","static"]
+  period: "2026"
+  image: images/projects/tally/overview.jpg
+  imageAlt: "Tally's overview screen with today's calories, protein, training days, latest weight, macro progress and the local AI coach panel (synthetic data)"
+  summary: "A self-hosted fitness tracker with a private AI coach. The coach runs on a local LLM through LM Studio, so your data never leaves your own machines."
+  problem: "Getting useful coaching on your own workout and nutrition logs usually means handing personal health data to a cloud service. Tally keeps tracking, storage and AI inference on your own PC, reachable only from your own devices."
+  features:
+  - "**Tracking:** log workouts set by set, meals and macros, and body weight from your phone. An in-progress workout is saved in the browser, so it survives a refresh or a dropped connection, and a retried submit never logs it twice."
+  - "**Local AI coach:** ask for a weekly review, a workout plan or a meal idea based on your last 4 weeks. The app computes every number and the model reads a prepared summary; **View context** shows exactly what it received."
+  - "**Logging from Discord (opt-in):** post entries in a channel from anywhere. Tally catches up on missed messages when it next starts and replies with what it logged."
+  - "**Private by design:** bound to localhost and reachable only over Tailscale, with cookie auth, HMAC-signed tokens and sanitized model output."
+  - "**Built spec-first with AI assistance:** the intent, spec and milestone plan were written before any code, and every later feature follows the same documents-first workflow."
+  note: "Tally covers fitness today. Finance tracking and an AI-organized brain dump are planned."
+  stack: ["Java 21", "Spring Boot 4", "Spring Security", "Spring Data JPA", "SQLite", "React", "Vite", "LM Studio", "Discord4J", "Tailscale"]
+  repos:
+  - label: GitHub
+    url: https://github.com/jmgloria07/tally
+  demoNote: Self-hosted by design, so there is no public demo.
 
 - name: THE-HACKSAW
-  url: https://the-hacksaw.quantumjosh.me
   role: Owner
-#  repo: https://github.com/jmgloria07/joshilog.com
-  summary: "A web application crafted to assist in streamlining cutting processes across various one-dimensional materials. Created with React, see code repository at [Github](https://github.com/jmgloria07/the-hacksaw)."
-  tags: ["hobby","react","ui","single-page"]
+  period: "2024"
+  summary: "A web app that works out how to cut stock lengths of material, such as steel bars, into the pieces a project needs."
+  problem: "A civil engineer friend was planning cuts in Excel, which took time, caused errors and led to buying more material than needed."
+  features:
+  - "Calculates cutting plans with three bin-packing heuristics: First Fit, Best Fit and Worst Fit."
+  - "Started as a proof of concept and was improved based on the engineer's feedback."
+  stack: ["React", "Vite", "Bootstrap 5", "Firebase Hosting"]
+  repos:
+  - label: GitHub
+    url: https://github.com/jmgloria07/the-hacksaw
+  demo: https://the-hacksaw.quantumjosh.me
+
+- name: Grace Note
+  role: Owner
+  period: "2020"
+  summary: "A gratitude journal with a social twist: write down what you're grateful for and share it."
+  problem: "Writing down gratitude supports well-being, and a feed made only of gratitude posts would be a more positive place to scroll."
+  features:
+  - "REST API to post and retrieve a user's gratitude notes, documented with Swagger UI."
+  - "Angular client, built with Angular Material, that consumes the API."
+  stack: ["Java", "Spring Boot", "JPA", "Angular", "Angular Material", "TypeScript"]
+  repos:
+  - label: API
+    url: https://github.com/jmgloria07/gracenote
+  - label: Angular UI
+    url: https://github.com/jmgloria07/gracenote-angular
+
+- name: Tic Tac Toe Game API
+  role: Contributor
+  period: "2020"
+  summary: "A Tic-Tac-Toe game played through a REST API."
+  problem: "Final project for an ASP.NET Core masters class."
+  features:
+  - "Registration and login with JWT authentication, plus email confirmation through SendGrid or SMTP."
+  - "Create games and take turns, with an authorization rule that only a game's players can act on it."
+  - "Entity Framework Core persistence with migrations, global exception handling and Swagger docs."
+  stack: ["C#", "ASP.NET Core", "Entity Framework Core", "JWT", "Swagger"]
+  repos:
+  - label: GitHub
+    url: https://github.com/jmgloria07/ASPNetCoreMastersTicTacToeGame
 
 - name: Joshilog
-#  logo: /images/logo/main-logo.png
-  url: https://www.joshilog.com
   role: Owner
-#  repo: https://github.com/jmgloria07/joshilog.com
-  summary: "*May tocilog, tapsilog, meron din joshilog*! A blog, also by yours truly. See code repository at [Github](https://github.com/jmgloria07/joshilog.com)."
-  tags: ["hobby","hugo","ui","static"]
+  period: "2022"
+  summary: "*May tocilog, tapsilog, meron din joshilog!* My personal travel blog."
+  problem: "A home for travel stories, from Baguio and La Union to Palawan."
+  features:
+  - "Static site built with Hugo and hosted on Firebase."
+  stack: ["Hugo", "Firebase Hosting"]
+  repos:
+  - label: GitHub
+    url: https://github.com/jmgloria07/joshilog.com
+  demo: https://www.joshilog.com
 
-- name: Tic Tac Toe Game
-  role: Contributor
-  repo: https://github.com/jmgloria07/ASPNetCoreMastersTicTacToeGame
-  summary: A Tic-Tac-Toe API game. Presented as ASP.NET Core masters class final project.
-  tags: ["hobby","professional","api","netcore"]
-
-- name: Grace Note (API)
+- name: Quantum Josh
   role: Owner
-  repo: https://github.com/jmgloria07/gracenote
-  summary: Grace Note is a social network aware application that allows *a user to note and/or share what they are grateful for*. This project is designed as a REST application that connects to an RDBMS repository.
-  tags: ["hobby","api","spring","spring-boot"]
-
-- name: Grace Note (UI)
-  role: Owner
-  repo: https://github.com/jmgloria07/gracenote-angular
-  summary: This is [Grace Note's](https://github.com/jmgloria07/gracenote) UI equivalent, created in Angular.
-  tags: ["hobby","ui","static","angular"]
+  period: "2021–2026"
+  summary: "This site: my personal profile and portfolio."
+  problem: "One place for my work history, skills and projects."
+  features:
+  - "Every section is edited as YAML data, with no HTML needed."
+  - "Built on the Toha Hugo theme with light and dark modes, plus a custom projects layout."
+  stack: ["Hugo", "Toha theme", "Bootstrap 5", "Firebase Hosting"]
+  repos:
+  - label: GitHub
+    url: https://github.com/jmgloria07/quantumjosh.me
